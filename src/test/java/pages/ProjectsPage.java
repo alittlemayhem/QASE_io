@@ -1,15 +1,18 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ProjectsPage {
 
-    //@Step("Open 'Projects' page.")
+    private final String REMOVE_BUTTON = "[data-testid=remove]",
+            DELETE_PROJECT_BUTTON = "//span[text()='Delete project']",
+            ACTION_MENU = "button[aria-label='Open action menu']";
+
+    @Step("Open 'Projects' page.")
     public void openPage() {
         open("projects");
     }
@@ -18,13 +21,13 @@ public class ProjectsPage {
         $(byText("Create new project")).shouldBe(Condition.visible);
     }
 
-    //@Step("Remove project after test is finished.")
+    @Step("Remove project after test is finished.")
     public void removeProject(String projectName) {
         $(byText(projectName))
                 .ancestor("tr")
-                .find("button[aria-label='Open action menu']")
+                .find(ACTION_MENU)
                 .click();
-        $("[data-testid=remove]").click();
-        $(byXpath("//span[text()='Delete project']")).click();
+        $(REMOVE_BUTTON).click();
+        $x(DELETE_PROJECT_BUTTON).click();
     }
 }

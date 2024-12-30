@@ -3,15 +3,14 @@ package test;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 import steps.CreateProjectStep;
 import steps.LoginStep;
 import steps.RemoveProjectStep;
+import utils.PropertyReader;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
@@ -25,6 +24,9 @@ public class BaseTest {
     LoginStep loginStep;
     CreateProjectStep createProjectStep;
     RemoveProjectStep removeProjectStep;
+
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @BeforeMethod
     public void setup() {

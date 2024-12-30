@@ -8,7 +8,7 @@ public class ProjectTest extends BaseTest {
     @Test(testName = "Project with required fields", description = "Create project with filled name and code.")
     @Description("Creation of new project named 'QASE' and with code 'AQ'")
     public void checkCreateProjectWithRequiredFields() {
-        loginStep.login();
+        loginStep.login(user, password);
         projectsPage.waitTilOpened();
         newProjectModal.open()
                 .setProjectName("QASE")
@@ -22,7 +22,7 @@ public class ProjectTest extends BaseTest {
     @Test(testName = "Project with name only", description = "Create project with filled name.")
     @Description("Creation of new project named 'QASE'")
     public void checkCreateProjectNameOnly() {
-        loginStep.login();
+        loginStep.login(user, password);
         projectsPage.waitTilOpened();
         newProjectModal.open()
                 .setProjectName("QASE")
@@ -35,7 +35,7 @@ public class ProjectTest extends BaseTest {
     @Test(testName = "Public project creation", description = "Create project with public access.")
     @Description("Creation of new project named 'QASE' with access mode 'Public'")
     public void checkCreatePublicProject() {
-        loginStep.login();
+        loginStep.login(user, password);
         projectsPage.waitTilOpened();
         newProjectModal.open()
                 .setProjectName("QASEradio")
@@ -49,7 +49,7 @@ public class ProjectTest extends BaseTest {
     @Test(testName = "Group project creation", description = "Create project with private access (group mode).")
     @Description("Creation of new project named 'QASE' with access mode 'Private' for specific group.")
     public void checkCreatePrivateProjectGroupAccess() {
-        loginStep.login();
+        loginStep.login(user, password);
         projectsPage.waitTilOpened();
         newProjectModal.open()
                 .setProjectName("QASEradio")

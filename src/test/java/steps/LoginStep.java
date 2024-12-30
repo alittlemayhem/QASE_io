@@ -6,14 +6,13 @@ import utils.PropertyReader;
 public class LoginStep {
 
     LoginPage loginPage;
-    String user = System.getProperty("user", PropertyReader.getProperty("user"));
-    String password = System.getProperty("password", PropertyReader.getProperty("password"));
+
 
     public LoginStep() {
         loginPage = new LoginPage();
     }
 
-    public void login() {
+    public void login(String user, String password) {
         loginPage.openPage()
                 .login(user, password);
     }

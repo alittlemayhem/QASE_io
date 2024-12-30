@@ -1,24 +1,24 @@
 package test;
 
-import dto.TestcaseBasic;
+import dto.TestСaseBasic;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 public class TestCaseCreateTest extends BaseTest {
 
-    TestcaseBasic basicCaseInfo1 = TestcaseBasic.builder()
+    TestСaseBasic basicCaseInfo1 = TestСaseBasic.builder()
             .title("Case 1")
             .build();
-    TestcaseBasic basicCaseInfo2 = TestcaseBasic.builder()
+    TestСaseBasic basicCaseInfo2 = TestСaseBasic.builder()
             .title("Case 2")
             .build();
 
     @Test(testName = "Case creation with basic info", description = "Create test case with 'Basic' section filled.")
     @Description("Creation of new test case with all fields filled/selected/checked in the 'Basic' section")
     public void checkCreateTestCaseWithoutSteps() {
-        loginStep.login();
+        loginStep.login(user, password);
         projectsPage.waitTilOpened();
-        createProjectStep.create();
+        createProjectStep.create("QASE");
         createdProjectPage.switchToTestCase()
                 .fillBasicSection(basicCaseInfo1)
                 .saveTestCase()
@@ -31,9 +31,9 @@ public class TestCaseCreateTest extends BaseTest {
     @Test(testName = "Case creation with steps", description = "Create test case with specified amount of test steps.")
     @Description("Creation of new test case with all fields in the 'Basic' section and addition of 3 steps filled with data.")
     public void checkCreateTestCaseWithSteps() {
-        loginStep.login();
+        loginStep.login(user, password);
         projectsPage.waitTilOpened();
-        createProjectStep.create();
+        createProjectStep.create("QASE");
         createdProjectPage.switchToTestCase()
                 .fillBasicSection(basicCaseInfo2)
                 .fillTestCaseSteps(3)

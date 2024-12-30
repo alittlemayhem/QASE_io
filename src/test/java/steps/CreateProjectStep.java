@@ -10,9 +10,9 @@ public class CreateProjectStep {
         newProjectModal = new NewProjectModal();
     }
 
-    public void create() {
+    public void create(String project) {
         newProjectModal.open()
-                .setProjectName("QASE")
+                .setProjectName(project)
                 .clickCreateProject();
     }
 }
